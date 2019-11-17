@@ -21,8 +21,8 @@ public class Example_4_9 {
     ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
     Locale locale = Locale.getDefault();
     MessageInterpolator customInterpolator = new LocaleSpecificMessageInterpolator(
-        locale,
-        factory.getMessageInterpolator()
+        factory.getMessageInterpolator(),
+        locale
     );
     Validator validator = factory.usingContext()
         .messageInterpolator(customInterpolator)
