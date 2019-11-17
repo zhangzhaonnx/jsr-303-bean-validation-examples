@@ -1,4 +1,4 @@
-package com.zhangzhao.ch04.mock;
+package com.zhangzhao.ch04.s3_message_interpolation.core;
 
 import java.util.Locale;
 import javax.validation.MessageInterpolator;

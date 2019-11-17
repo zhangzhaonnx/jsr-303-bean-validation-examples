@@ -1,6 +1,7 @@
-package com.zhangzhao.ch04;
+package com.zhangzhao.ch04.s3_message_interpolation;
 
-import com.zhangzhao.ch04.mock.ContextualMessageInterpolator;
+import com.zhangzhao.ch04.mock.LocaleSpecificMessageInterpolator;
+import java.util.Locale;
 import javax.validation.Configuration;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -8,9 +9,10 @@ import javax.validation.ValidatorFactory;
 import org.junit.Test;
 
 /**
- * Contextual container possible MessageInterpolator implementation
+ * Use MessageInterpolator to use a specific Locale value
  */
-public class Example_4_4 {
+public class Example_4_3 {
+
 
   @Test
   public void name() {
@@ -18,7 +20,10 @@ public class Example_4_4 {
 
     ValidatorFactory factory = configuration
         .messageInterpolator(
-            new ContextualMessageInterpolator(configuration.getDefaultMessageInterpolator()))
+            new LocaleSpecificMessageInterpolator(
+                configuration.getDefaultMessageInterpolator(),
+                Locale.CHINA)
+        )
         .buildValidatorFactory();
 
     Validator validator = factory.getValidator();
