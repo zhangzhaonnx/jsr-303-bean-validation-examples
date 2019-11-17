@@ -1,11 +1,11 @@
-package com.zhangzhao.ch04;
+package com.zhangzhao.ch04.s4_bootstrapping;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
-import com.zhangzhao.ch04.mock.ContainerMessageInterpolator;
-import com.zhangzhao.ch04.mock.JPAAwareTraversableResolver;
-import com.zhangzhao.ch04.mock.acme.ACMEConfigurationImpl;
+import com.zhangzhao.ch04.s4_bootstrapping.core.ContainerMessageInterpolator;
+import com.zhangzhao.ch04.s4_bootstrapping.core.JPAAwareTraversableResolver;
+import com.zhangzhao.ch04.s4_bootstrapping.core.acme.ACMEConfigurationImpl;
 import javax.validation.Configuration;
 import javax.validation.ValidatorFactory;
 import org.junit.Test;

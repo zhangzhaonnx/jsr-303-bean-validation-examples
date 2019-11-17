@@ -1,11 +1,11 @@
-package com.zhangzhao.ch04;
+package com.zhangzhao.ch04.s4_bootstrapping;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertThat;
 
-import com.zhangzhao.ch04.mock.ContainerComponentConstraintValidatorFactory;
-import com.zhangzhao.ch04.mock.ContainerMessageInterpolator;
-import com.zhangzhao.ch04.mock.JPAAwareTraversableResolver;
+import com.zhangzhao.ch04.s4_bootstrapping.core.ContainerComponentConstraintValidatorFactory;
+import com.zhangzhao.ch04.s4_bootstrapping.core.ContainerMessageInterpolator;
+import com.zhangzhao.ch04.s4_bootstrapping.core.JPAAwareTraversableResolver;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;

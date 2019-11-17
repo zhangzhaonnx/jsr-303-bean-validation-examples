@@ -1,4 +1,4 @@
-package com.zhangzhao.ch04.mock.acme;
+package com.zhangzhao.ch04.s4_bootstrapping.core.acme;
 
 import java.util.Set;
 import javax.validation.ConstraintViolation;

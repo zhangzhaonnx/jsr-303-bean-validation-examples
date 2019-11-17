@@ -1,4 +1,4 @@
-package com.zhangzhao.ch04.mock.acme;
+package com.zhangzhao.ch04.s4_bootstrapping.core.acme;
 
 import javax.validation.ClockProvider;
 import javax.validation.ConstraintValidatorFactory;
@@ -9,7 +9,6 @@ import javax.validation.ValidationException;
 import javax.validation.Validator;
 import javax.validation.ValidatorContext;
 import javax.validation.ValidatorFactory;
-import org.hibernate.validator.HibernateValidatorFactory;
 
 public class ACMEValidatorFactory implements ValidatorFactory {
 

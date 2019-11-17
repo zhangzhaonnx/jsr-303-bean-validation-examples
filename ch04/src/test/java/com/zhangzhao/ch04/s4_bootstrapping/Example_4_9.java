@@ -1,9 +1,9 @@
-package com.zhangzhao.ch04;
+package com.zhangzhao.ch04.s4_bootstrapping;
 
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 
-import com.zhangzhao.ch04.mock.LocaleSpecificMessageInterpolator;
+import com.zhangzhao.ch04.s4_bootstrapping.core.LocaleSpecificMessageInterpolator;
 import java.util.Locale;
 import javax.validation.MessageInterpolator;
 import javax.validation.Validation;

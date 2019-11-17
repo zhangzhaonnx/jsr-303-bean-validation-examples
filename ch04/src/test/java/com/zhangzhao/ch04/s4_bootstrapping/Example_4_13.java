@@ -1,4 +1,4 @@
-package com.zhangzhao.ch04;
+package com.zhangzhao.ch04.s4_bootstrapping;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;

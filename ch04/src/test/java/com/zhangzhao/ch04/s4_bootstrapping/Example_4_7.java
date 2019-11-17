@@ -1,10 +1,10 @@
-package com.zhangzhao.ch04;
+package com.zhangzhao.ch04.s4_bootstrapping;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertThat;
 
-import com.zhangzhao.ch04.mock.OSGiServiceDiscoverer;
-import com.zhangzhao.ch04.mock.acme.ACMEValidator;
+import com.zhangzhao.ch04.s4_bootstrapping.core.OSGiServiceDiscoverer;
+import com.zhangzhao.ch04.s4_bootstrapping.core.acme.ACMEValidator;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;

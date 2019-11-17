@@ -1,4 +1,4 @@
-package com.zhangzhao.ch04.mock;
+package com.zhangzhao.ch04.s4_bootstrapping.core;
 
 import java.util.Locale;
 import javax.validation.MessageInterpolator;

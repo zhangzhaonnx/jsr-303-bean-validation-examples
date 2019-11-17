@@ -1,8 +1,8 @@
-package com.zhangzhao.ch04.mock;
+package com.zhangzhao.ch04.s4_bootstrapping.core;
 
 import static java.util.Collections.singletonList;
 
-import com.zhangzhao.ch04.mock.acme.ACMEProvider;
+import com.zhangzhao.ch04.s4_bootstrapping.core.acme.ACMEProvider;
 import java.util.List;
 import javax.validation.ValidationProviderResolver;
 import javax.validation.spi.ValidationProvider;

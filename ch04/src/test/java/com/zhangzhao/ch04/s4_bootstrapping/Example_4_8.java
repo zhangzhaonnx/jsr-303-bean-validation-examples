@@ -1,13 +1,13 @@
-package com.zhangzhao.ch04;
+package com.zhangzhao.ch04.s4_bootstrapping;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertThat;
 
-import com.zhangzhao.ch04.mock.Address;
-import com.zhangzhao.ch04.mock.ContainerMessageInterpolator;
-import com.zhangzhao.ch04.mock.acme.ACMEConstraintDescriptor;
-import com.zhangzhao.ch04.mock.acme.ACMEProvider;
-import com.zhangzhao.ch04.mock.acme.ACMEValidator;
+import com.zhangzhao.ch04.s4_bootstrapping.core.Address;
+import com.zhangzhao.ch04.s4_bootstrapping.core.ContainerMessageInterpolator;
+import com.zhangzhao.ch04.s4_bootstrapping.core.acme.ACMEConstraintDescriptor;
+import com.zhangzhao.ch04.s4_bootstrapping.core.acme.ACMEProvider;
+import com.zhangzhao.ch04.s4_bootstrapping.core.acme.ACMEValidator;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;

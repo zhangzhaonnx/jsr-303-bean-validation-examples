@@ -1,7 +1,7 @@
-package com.zhangzhao.ch04;
+package com.zhangzhao.ch04.s4_bootstrapping;
 
-import com.zhangzhao.ch04.mock.acme.ACMEProvider;
-import com.zhangzhao.ch04.mock.acme.ACMEValidatorFactory;
+import com.zhangzhao.ch04.s4_bootstrapping.core.acme.ACMEProvider;
+import com.zhangzhao.ch04.s4_bootstrapping.core.acme.ACMEValidatorFactory;
 import javax.validation.Validation;
 import javax.validation.ValidatorFactory;
 import org.junit.Test;

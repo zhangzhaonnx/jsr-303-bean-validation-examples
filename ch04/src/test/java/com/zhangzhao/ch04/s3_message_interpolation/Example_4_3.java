@@ -1,6 +1,6 @@
 package com.zhangzhao.ch04.s3_message_interpolation;
 
-import com.zhangzhao.ch04.mock.LocaleSpecificMessageInterpolator;
+import com.zhangzhao.ch04.s4_bootstrapping.core.LocaleSpecificMessageInterpolator;
 import java.util.Locale;
 import javax.validation.Configuration;
 import javax.validation.Validation;
