@@ -27,14 +27,17 @@ public class Example_4_2_1 {
     book.setAuthor(author);
 
     Set<ConstraintViolation<Book>> constraintViolations = validator.validate(book);
-    Iterator<ConstraintViolation<Book>> iterator = constraintViolations.iterator();
-    verifyFirst(iterator, book);
-    verifySecond(iterator, book);
+    constraintViolations.forEach(c -> {
+          if (c.getMessage().equals("may not be null or empty")) {
+            verifyFirst(c, book);
+          } else {
+            verifySecond(c, book);
+          }
+        }
+    );
   }
 
-  private void verifyFirst(Iterator<ConstraintViolation<Book>> iterator, Book book) {
-    ConstraintViolation<Book> constraintViolation = iterator.next();
-
+  private void verifyFirst(ConstraintViolation<Book> constraintViolation, Book book) {
     assert "may not be null or empty".equals(constraintViolation.getMessage());
     assert book == constraintViolation.getRootBean();
     assert book == constraintViolation.getLeafBean();
@@ -44,9 +47,7 @@ public class Example_4_2_1 {
     assert !nodeIter.hasNext();
   }
 
-  private void verifySecond(Iterator<ConstraintViolation<Book>> iterator, Book book) {
-    ConstraintViolation<Book> constraintViolation = iterator.next();
-
+  private void verifySecond(ConstraintViolation<Book> constraintViolation, Book book) {
     assert "lastname must not be null".equals(constraintViolation.getMessage());
     assert book == constraintViolation.getRootBean();
     assert book.getAuthor() == constraintViolation.getLeafBean();
