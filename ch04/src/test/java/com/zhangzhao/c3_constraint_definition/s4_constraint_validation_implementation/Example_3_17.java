@@ -1,4 +1,4 @@
-package com.zhangzhao.ch03.s4_constraint_validation_implementation;
+package com.zhangzhao.c3_constraint_definition.s4_constraint_validation_implementation;
 
 import java.util.Collection;
 import javax.validation.ConstraintValidator;

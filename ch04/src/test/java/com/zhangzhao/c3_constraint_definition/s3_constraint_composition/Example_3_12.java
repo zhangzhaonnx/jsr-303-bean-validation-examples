@@ -1,4 +1,4 @@
-package com.zhangzhao.ch03.s3_constraint_composition;
+package com.zhangzhao.c3_constraint_definition.s3_constraint_composition;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
@@ -8,7 +8,7 @@ import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.ElementType.TYPE_USE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-import com.zhangzhao.ch03.s3_constraint_composition.Example_3_12.FrenchZipCode.List;
+import com.zhangzhao.c3_constraint_definition.s3_constraint_composition.Example_3_12.FrenchZipCode.List;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;

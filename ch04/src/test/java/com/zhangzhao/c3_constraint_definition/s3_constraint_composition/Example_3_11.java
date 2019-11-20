@@ -1,4 +1,4 @@
-package com.zhangzhao.ch03.s3_constraint_composition;
+package com.zhangzhao.c3_constraint_definition.s3_constraint_composition;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
@@ -8,7 +8,7 @@ import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.ElementType.TYPE_USE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-import com.zhangzhao.ch03.s3_constraint_composition.Example_3_10.FrenchZipCode.List;
+import com.zhangzhao.c3_constraint_definition.s3_constraint_composition.Example_3_11.FrenchZipCode.List;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
@@ -17,16 +17,19 @@ import javax.validation.Constraint;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
+import javax.validation.ReportAsSingleViolation;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 /**
- * Composition is done by annotating the composed constraint
+ * If any of the composing constraints fail, the error report corresponding to @FrenchZipCode is
+ * raised and none other
  */
-public class Example_3_10 {
+public class Example_3_11 {
 
   @Pattern(regexp = "[0-9]*")
   @Size(min = 5, max = 5)
+  @ReportAsSingleViolation
   @Constraint(validatedBy = FrenchZipCodeValidator.class)
   @Documented
   @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})

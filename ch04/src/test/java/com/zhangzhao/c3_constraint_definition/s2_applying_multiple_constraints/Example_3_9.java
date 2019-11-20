@@ -1,6 +1,6 @@
-package com.zhangzhao.ch03.s2_applying_multiple_constraints;
+package com.zhangzhao.c3_constraint_definition.s2_applying_multiple_constraints;
 
-import com.zhangzhao.ch03.s2_applying_multiple_constraints.Example_3_7.ZipCode;
+import com.zhangzhao.c3_constraint_definition.s2_applying_multiple_constraints.Example_3_7.ZipCode;
 import javax.validation.groups.Default;
 
 /**

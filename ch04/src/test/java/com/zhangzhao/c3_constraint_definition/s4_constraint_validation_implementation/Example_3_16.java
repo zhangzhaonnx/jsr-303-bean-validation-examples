@@ -1,5 +1,6 @@
-package com.zhangzhao.ch03.s4_constraint_validation_implementation;
+package com.zhangzhao.c3_constraint_definition.s4_constraint_validation_implementation;
 
+import com.zhangzhao.c3_constraint_definition.s1_constraint_annotation.Example_3_3.DateParametersConsistent;
 import java.util.Collection;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -70,11 +71,6 @@ public class Example_3_16 {
     public boolean isValid(Object value, ConstraintValidatorContext context) {
       return false;
     }
-  }
-
-
-  public @interface DateParametersConsistent {
-
   }
 
   public @interface ELScript {

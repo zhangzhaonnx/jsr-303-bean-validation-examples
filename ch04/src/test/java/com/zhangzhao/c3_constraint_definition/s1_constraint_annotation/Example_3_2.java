@@ -1,4 +1,4 @@
-package com.zhangzhao.ch03.s1_constraint_annotation;
+package com.zhangzhao.c3_constraint_definition.s1_constraint_annotation;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
@@ -17,40 +17,31 @@ import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
 
 /**
- * Constraint definition with default parameter
+ * Simple constraint definition
  */
-public class Example_3_5 {
+public class Example_3_2 {
 
   /**
-   * A frequency in Hz as audible to human ear. Adjustable to the age of the person. Accepts
-   * Numbers.
+   * Mark a String as representing a well formed order number
    */
   @Documented
-  @Constraint(validatedBy = AudibleValidator.class)
+  @Constraint(validatedBy = OrderNumberValidator.class)
   @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
   @Retention(RUNTIME)
-  private @interface Audible {
+  private @interface OrderNumber {
 
-    Age age() default Age.YOUNG;
-
-    String message() default "{com.acme.constraint.Audible.message}";
+    String message() default "{com.acme.constraint.OrderNumber.message}";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 
-    enum Age {
-      YOUNG,
-      WONDERING,
-      OLD
-    }
   }
 
-
-  private static class AudibleValidator implements ConstraintValidator<Audible, Integer> {
+  private static class OrderNumberValidator implements ConstraintValidator<OrderNumber, String> {
 
     @Override
-    public boolean isValid(Integer value, ConstraintValidatorContext context) {
+    public boolean isValid(String value, ConstraintValidatorContext context) {
       return false;
     }
   }

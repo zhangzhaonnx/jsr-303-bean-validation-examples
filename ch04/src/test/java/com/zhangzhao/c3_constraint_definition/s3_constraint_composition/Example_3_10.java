@@ -1,4 +1,4 @@
-package com.zhangzhao.ch03.s1_constraint_annotation;
+package com.zhangzhao.c3_constraint_definition.s3_constraint_composition;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
@@ -8,37 +8,49 @@ import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.ElementType.TYPE_USE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+import com.zhangzhao.c3_constraint_definition.s3_constraint_composition.Example_3_10.FrenchZipCode.List;
 import java.lang.annotation.Documented;
+import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /**
- * Simple constraint definition
+ * Composition is done by annotating the composed constraint
  */
-public class Example_3_2 {
+public class Example_3_10 {
 
-  /**
-   * Mark a String as representing a well formed order number
-   */
+  @Pattern(regexp = "[0-9]*")
+  @Size(min = 5, max = 5)
+  @Constraint(validatedBy = FrenchZipCodeValidator.class)
   @Documented
-  @Constraint(validatedBy = OrderNumberValidator.class)
   @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
   @Retention(RUNTIME)
-  private @interface OrderNumber {
+  @Repeatable(List.class)
+  public @interface FrenchZipCode {
 
-    String message() default "{com.acme.constraint.OrderNumber.message}";
+    String message() default "Wrong zip code";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 
+    @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
+    @Retention(RUNTIME)
+    @Documented
+    @interface List {
+
+      FrenchZipCode[] value();
+    }
   }
 
-  private static class OrderNumberValidator implements ConstraintValidator<OrderNumber, String> {
+  private static class FrenchZipCodeValidator implements
+      ConstraintValidator<FrenchZipCode, String> {
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {

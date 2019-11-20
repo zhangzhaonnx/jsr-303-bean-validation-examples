@@ -1,4 +1,4 @@
-package com.zhangzhao.ch03.s1_constraint_annotation;
+package com.zhangzhao.c3_constraint_definition.s1_constraint_annotation;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
@@ -26,7 +26,7 @@ public class Example_3_3 {
   @Constraint(validatedBy = DateParametersConsistentValidator.class)
   @Target({METHOD, CONSTRUCTOR, ANNOTATION_TYPE})
   @Retention(RUNTIME)
-  private @interface DateParametersConsistent {
+  public @interface DateParametersConsistent {
 
     String message() default "{com.acme.constraint.DateParametersConsistent.message}";
 

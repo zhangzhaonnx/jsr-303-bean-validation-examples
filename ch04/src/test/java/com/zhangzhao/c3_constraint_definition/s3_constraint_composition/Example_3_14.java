@@ -1,4 +1,4 @@
-package com.zhangzhao.ch03.s2_applying_multiple_constraints;
+package com.zhangzhao.c3_constraint_definition.s3_constraint_composition;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
@@ -8,58 +8,49 @@ import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.ElementType.TYPE_USE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-import com.zhangzhao.ch03.s2_applying_multiple_constraints.Example_3_7.ZipCode.List;
+import com.zhangzhao.c3_constraint_definition.s3_constraint_composition.Example_3_14.EmmanuelsEmail.List;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 import javax.validation.Constraint;
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import javax.validation.OverridesAttribute;
 import javax.validation.Payload;
+import javax.validation.constraints.Pattern;
 
 /**
- * Multi-valued constraint definition
+ * Use of constraintIndex in @OverridesAttribute
  */
-public class Example_3_7 {
+public class Example_3_14 {
 
-  /**
-   * Validate a zip code for a given country The only supported type is String
-   */
   @Documented
-  @Constraint(validatedBy = ZipCodeValidator.class)
+  @Constraint(validatedBy = {})
+  @Pattern(regexp = "[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}") // email
+  @Pattern(regexp = ".*?emmanuel.*?") // emmanuel
   @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
   @Retention(RUNTIME)
   @Repeatable(List.class)
-  public @interface ZipCode {
+  public @interface EmmanuelsEmail {
 
-    String countryCode();
+    String message() default "Not emmanuel's email";
 
-    String message() default "{com.acme.constraint.ZipCode.message}";
+    @OverridesAttribute(constraint = Pattern.class, name = "message", constraintIndex = 0)
+    String emailMessage() default "Not an email";
+
+    @OverridesAttribute(constraint = Pattern.class, name = "message", constraintIndex = 1)
+    String emmanuelMessage() default "Not Emmanuel";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 
-    /**
-     * Defines several @ZipCode annotations on the same element
-     *
-     * @see {@link ZipCode}
-     */
     @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
     @Retention(RUNTIME)
     @Documented
     @interface List {
 
-      ZipCode[] value();
+      EmmanuelsEmail[] value();
     }
   }
 
-  private static class ZipCodeValidator implements ConstraintValidator<ZipCode, String> {
-
-    @Override
-    public boolean isValid(String value, ConstraintValidatorContext context) {
-      return false;
-    }
-  }
 }

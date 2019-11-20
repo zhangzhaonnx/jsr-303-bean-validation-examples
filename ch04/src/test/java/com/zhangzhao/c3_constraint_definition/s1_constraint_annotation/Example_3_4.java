@@ -1,4 +1,4 @@
-package com.zhangzhao.ch03.s1_constraint_annotation;
+package com.zhangzhao.c3_constraint_definition.s1_constraint_annotation;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.CONSTRUCTOR;

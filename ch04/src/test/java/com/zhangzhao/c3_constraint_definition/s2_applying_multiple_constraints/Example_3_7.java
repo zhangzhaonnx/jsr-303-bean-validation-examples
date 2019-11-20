@@ -1,4 +1,4 @@
-package com.zhangzhao.ch03.s3_constraint_composition;
+package com.zhangzhao.c3_constraint_definition.s2_applying_multiple_constraints;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.CONSTRUCTOR;
@@ -8,7 +8,7 @@ import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.ElementType.TYPE_USE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-import com.zhangzhao.ch03.s3_constraint_composition.Example_3_13.FrenchZipCode.List;
+import com.zhangzhao.c3_constraint_definition.s2_applying_multiple_constraints.Example_3_7.ZipCode.List;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
@@ -16,53 +16,46 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import javax.validation.OverridesAttribute;
 import javax.validation.Payload;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 /**
- * Attributes from composing annotations can be overridden by attributes from the composed
- * annotation
+ * Multi-valued constraint definition
  */
-public class Example_3_13 {
+public class Example_3_7 {
 
-  @Pattern(regexp = "[0-9]*")
-  @Size
-  @Constraint(validatedBy = FrenchZipCodeValidator.class)
+  /**
+   * Validate a zip code for a given country The only supported type is String
+   */
   @Documented
+  @Constraint(validatedBy = ZipCodeValidator.class)
   @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
   @Retention(RUNTIME)
   @Repeatable(List.class)
-  public @interface FrenchZipCode {
+  public @interface ZipCode {
 
-    String message() default "Wrong zip code";
+    String countryCode();
+
+    String message() default "{com.acme.constraint.ZipCode.message}";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
 
-    @OverridesAttribute(constraint = Size.class, name = "min")
-    @OverridesAttribute(constraint = Size.class, name = "max")
-    int size() default 5;
-
-    @OverridesAttribute(constraint = Size.class, name = "message")
-    String sizeMessage() default "{com.acme.constraint.FrenchZipCode.zipCode.size}";
-
-    @OverridesAttribute(constraint = Pattern.class, name = "message")
-    String numberMessage() default "{com.acme.constraint.FrenchZipCode.number.size}";
-
+    /**
+     * Defines several @ZipCode annotations on the same element
+     *
+     * @see {@link ZipCode}
+     */
     @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
     @Retention(RUNTIME)
     @Documented
     @interface List {
 
-      FrenchZipCode[] value();
+      ZipCode[] value();
     }
   }
 
-  private static class FrenchZipCodeValidator implements
-      ConstraintValidator<FrenchZipCode, String> {
+  private static class ZipCodeValidator implements ConstraintValidator<ZipCode, String> {
 
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
